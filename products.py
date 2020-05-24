@@ -23,8 +23,24 @@ for product in products:
 
 with open('products.txt', 'w') as f:  # 'w'寫入模式
 	for product in products:
-		f.write(product[0] + ',' + ' 商品價格: ' + product[1] + '\n')
+		f.write(product[0] + ',' + product[1] + '\n')
 
-with open('products.csv', 'w') as f:  # 'w'寫入模式
+with open('products.csv', 'w', encoding = 'utf-8') as f:  # 'w'寫入模式，encoding 寫入utf-8編碼
+	f.write('商品, 價格' + '\n')
 	for product in products:
-		f.write(product[0] + ',' + ' 商品價格: ' + product[1] + '\n')
+		f.write(product[0] + ',' + product[1] + '\n')
+
+
+
+
+
+
+# 練習作業 整數存成檔案		
+# data = [1, 3, 5, 7, 9]
+# with open('test.txt', 'w') as f:
+# 	for i in data:
+# 		f.write(str(i) + '\n')
+
+
+
+
