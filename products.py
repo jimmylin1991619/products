@@ -12,7 +12,8 @@ while True:
 	products.append(p)
 print(products)	
 
-products[0][0] #找第一個清單的第一個
+ # products[0][0] #找第一個清單的第一個
 
-
-
+for product in products:
+	print(product)
+	print(product[0], '的價格是', product[1])
