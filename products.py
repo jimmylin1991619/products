@@ -1,22 +1,15 @@
-products = []
-
-
 
 # 讀取檔案 
 def read_file(filename):
-	import os # operating system
-	if os.path.isfile(filename): # 檢查檔案在不在資料夾
-		print('yeah! 找到檔案了')
-		with open(filename, 'r', encoding = 'utf-8') as f:
-			for line in f:
-				if '商品, 價格' in line:
-					continue #繼續=跳到下一迴圈
-				product_name, product_price = line.strip().split(',') #split為切割函數，遇到','就切割 strip 為移除換行符號
-				products.append([product_name, product_price])
+	products = []
+	with open(filename, 'r', encoding = 'utf-8') as f:
+		for line in f:
+			if '商品, 價格' in line:
+				continue #繼續=跳到下一迴圈
+			product_name, product_price = line.strip().split(',') #split為切割函數，遇到','就切割 strip 為移除換行符號
+			products.append([product_name, product_price])
 		print(products)
-	else:
-	print('找不到檔案...')
-	return products
+	return products	
 
 # 讓使用者輸入資料 (二維度清單)
 def user_input(products):
@@ -56,11 +49,20 @@ def write_file(filename, products):
 			f.write(product[0] + ',' + product[1] + '\n')
 
 
-products = read_file('products.csv')
-products = user_file(products)
-print_product(products)
-write_file('products.csv', products)
+def main(): #主要程式碼
+	import os # operating system
+	filename = 'products.csv'
+	if os.path.isfile(filename): # 檢查檔案在不在資料夾
+		print('yeah!找到檔案了')
+		products = read_file(filename)
+	else:
+		print('找不到檔案...')
 
+	products = user_input(products)
+	print_product(products)
+	write_file(filename, products)
+
+main()
 
 
 # 練習作業 整數存成檔案		
