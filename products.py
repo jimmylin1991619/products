@@ -15,5 +15,16 @@ print(products)
  # products[0][0] #找第一個清單的第一個
 
 for product in products:
-	print(product)
+	#print(product)
 	print(product[0], '的價格是', product[1])
+
+# 'abc' + '123' = 'abc123' 字串合併
+# 'abc' * 3 = 'abcabcabc' 字串乘法
+
+with open('products.txt', 'w') as f:  # 'w'寫入模式
+	for product in products:
+		f.write(product[0] + ',' + ' 商品價格: ' + product[1] + '\n')
+
+with open('products.csv', 'w') as f:  # 'w'寫入模式
+	for product in products:
+		f.write(product[0] + ',' + ' 商品價格: ' + product[1] + '\n')
